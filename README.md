@@ -1,44 +1,103 @@
 
-# Employee Salary Predictor
+# Employee Salary Prediction
 
-This project predicts the estimated salary of an employee based on two inputs:
-- Years of Experience
-- Education Level (High School, Bachelors, Masters, PhD)
+This project predicts employee salary based on experience and education level using a machine learning model built in Python. It provides a simple web interface to input data and see the predicted result.
 
-## 👩‍💻 Created by
+---
+
+## 👩‍💻 Developed by:
 **J. Pavithra**
 
-## 📂 Project Structure
+---
 
-Here’s a quick overview of what each file does:
+## 🚀 Technologies Used
 
-- `index.html`: A simple interactive web page (runs without Python) where users can input experience and education level to see an estimated salary instantly.
-- `main.py`: This is where the model would normally be trained using data. (In this version, we simulate it.)
-- `app.py`: A Streamlit app (Python-based) that could be used to host a dynamic web interface. If you're using Python, you can run this using `streamlit run app.py`.
-- `employee_data.csv`: Sample dataset containing historical data of salaries based on experience and education level.
-- `model.pkl`: Simulated output of a trained model saved using Python's `pickle` module. If real training was done, this would store a `LinearRegression` or similar model.
-- `salary_prediction.ipynb`: Placeholder for the Jupyter Notebook where data analysis and model training could be performed.
-- `requirements.txt`: List of Python libraries required (like `streamlit`, `scikit-learn`, `pandas`).
-- `README.md`: This documentation file.
+| Layer            | Technology       | Description                                   |
+|------------------|------------------|-----------------------------------------------|
+| Machine Learning | Python, scikit-learn | Trains a Linear Regression model to predict salary |
+| Backend          | Python, Flask     | Connects model to the web app                 |
+| Frontend         | HTML, CSS         | Provides input form and displays output       |
 
-## ⚙️ How It Works
+---
 
-1. The user enters years of experience and selects education level.
-2. A simple formula estimates the salary:
-   - `Base Salary + (Experience × Coefficient) + (Education Level × Bonus)`
-   - This is implemented directly in `index.html` using JavaScript.
-3. If using Python (`app.py`), the model can be loaded from `model.pkl` and predictions served dynamically.
+## 🧠 How It Works
 
-## 🚀 How to Run (Python Web App)
+1. **Model Training** (`train_model.py`)
+   - Trains a Linear Regression model on sample data
+   - Saves model as `model.pkl`
 
-If you want to run this project with Python:
+2. **Prediction** (`predict_salary.py`)
+   - Loads `model.pkl`
+   - Takes input: experience, education level
+   - Returns predicted salary
 
-```bash
-pip install -r requirements.txt
-streamlit run app.py
+3. **Web Interface** (`index.html`)
+   - User enters values in a form
+   - Form is submitted to Flask (`app.py`)
+   - Flask uses the model to predict salary
+   - Result is shown on the same page
+
+---
+
+## 🔗 File & Folder Descriptions
+
+| File / Folder           | Description |
+|--------------------------|-------------|
+| `app.py`                | Flask app that connects frontend and model |
+| `model.pkl`             | Saved ML model used for prediction |
+| `salary_prediction/`    | Contains training and prediction Python scripts |
+| `templates/index.html`  | User interface for entering inputs and showing output |
+| `README.md`             | Project documentation (this file) |
+| `static/` (optional)    | For future CSS or JS files if needed |
+
+---
+
+## 🖼 Simple Architecture Diagram
+
+```
+User Input (HTML form)
+        ↓
+   Flask Backend (app.py)
+        ↓
+ ML Model (model.pkl via predict_salary.py)
+        ↓
+   Predicted Salary (HTML Output)
 ```
 
-## 📌 Note
+---
 
-This is a **demonstration project** meant to show how a basic ML pipeline and web deployment might work. Real models would require training and saving the model to `model.pkl`.
+## 🧪 Example Input
+- Experience: `5`
+- Education Level: `3`
 
+**→ Output: ₹72,000 (example)**
+
+---
+
+## 📦 How to Run
+
+1. Train the model (optional if model.pkl already exists):
+   ```bash
+   python train_model.py
+   ```
+
+2. Start the Flask app:
+   ```bash
+   python app.py
+   ```
+
+3. Open your browser and go to:
+   ```
+   http://localhost:5000
+   ```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.  
+(C) 2025 J. Pavithra
+
+---
+
+Feel free to use, modify, or extend this project with credit.
